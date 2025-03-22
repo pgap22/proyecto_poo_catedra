@@ -2,7 +2,6 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Cotizacion {
     // Atributos privados
     private int id;
