@@ -1,4 +1,4 @@
-package com.multiworks.cliente;
+package com.multiworks.clases;
 
 import java.util.Date;
 
@@ -23,7 +23,7 @@ public class Cliente {
         this.telefono = telefono;
         this.correo = correo;
         this.creadoPor = creadoPor;
-        this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = !fechaCreacion.isEmpty() ? fechaCreacion : new Date().toString();
         this.activo = true;
     }
 
@@ -37,6 +37,12 @@ public class Cliente {
     public void inactivar() {
         this.activo = false;
         this.fechaInactivacion = java.time.LocalDate.now().toString();
+    }
+
+    public boolean validar() {
+        return documento != null && !documento.isEmpty() &&
+                nombre != null && !nombre.isEmpty() &&
+                tipoPersona != null && !tipoPersona.isEmpty();
     }
 
     public boolean isActivo() {
