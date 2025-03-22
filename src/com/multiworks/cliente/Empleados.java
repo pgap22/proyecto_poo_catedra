@@ -2,6 +2,7 @@ package com.multiworks.cliente;
 
 import java.util.Date;
 
+public class Empleados {
     // Atributos
     private String nombre;
     private String contexto;
