@@ -2,6 +2,8 @@ package com.multiworks.cliente;
 
 import java.util.Date;
 
+/**La definicion de todos los atributos**/
+
 public class Empleados {
     // Atributos
     private String nombre;
@@ -31,14 +33,15 @@ public class Empleados {
     // Métodos
 
     /**
-     * Asigna una actividad al empleado.
+     * Aqui se le asigna una actividad un empleado
      */
     public void asignarActividad() {
         System.out.println("Actividad asignada al empleado: " + this.nombre);
     }
 
+
     /**
-     * Actualiza la información del empleado.
+     * Se actualiza toda la informacion del Empleado
      */
     public void actualizarInformacion(String nuevoNombre, String nuevaDireccion, String nuevoNumeroContacto) {
         this.nombre = nuevoNombre;
@@ -49,7 +52,7 @@ public class Empleados {
     }
 
     /**
-     * Inactiva al empleado.
+     * Este es una funcion para poder inactivar un empleado
      */
     public void inactivarEmpleado() {
         this.estado = "Inactivo";
@@ -58,7 +61,7 @@ public class Empleados {
     }
 
     /**
-     * Muestra la información del empleado.
+     * Aqui muestra la informacion de los empleados
      */
     public void mostrarInformacion() {
         System.out.println("Nombre: " + this.nombre);
