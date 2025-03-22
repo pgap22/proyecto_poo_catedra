@@ -1,4 +1,4 @@
-import com.multiworks.cliente.Empleados;
+package com.multiworks.clases;
 
 public class Actividad {
     // Atributos privados
@@ -6,7 +6,7 @@ public class Actividad {
     private String titulo;
     private String descripcion;
     private Cotizacion cotizacion; // Relación de composición con Cotización
-    private Empleados empleadoAsignado; // Relación de asignación con Empleado
+    private Empleado empleadoAsignado; // Relación de asignación con Empleado
 
     // Constructor
     public Actividad(int id, String titulo, String descripcion, Cotizacion cotizacion) {
@@ -50,12 +50,12 @@ public class Actividad {
         this.cotizacion = cotizacion;
     }
 
-    public Empleados getEmpleadoAsignado() {
+    public Empleado getEmpleadoAsignado() {
         return empleadoAsignado;
     }
 
     //metodo para asignar un empleado a la actividad
-    public void asignarEmpleado(Empleados empleado) {
+    public void asignarEmpleado(Empleado empleado) {
         this.empleadoAsignado = empleado;
         System.out.println("Empleado " + empleado.getNombre() + " asignado a la actividad: " + this.titulo);
     }
@@ -85,7 +85,7 @@ public class Actividad {
 
     @Override
     public String toString() {
-        return "Actividad{" +
+        return "com.multiworks.clases.Actividad{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", descripcion='" + descripcion + '\'' +

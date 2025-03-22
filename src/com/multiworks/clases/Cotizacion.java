@@ -1,3 +1,5 @@
+package com.multiworks.clases;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +107,7 @@ public class Cotizacion {
 
     @Override
     public String toString() {
-        return "Cotizacion{" +
+        return "com.multiworks.clases.Cotizacion{" +
                 "id=" + id +
                 ", fechaInicio=" + fechaInicio +
                 ", fechaFin=" + fechaFin +

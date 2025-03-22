@@ -1,8 +1,8 @@
-package com.multiworks.cliente;
+package com.multiworks.clases;
 
 import java.util.Date;
 
-public class Empleados {
+public class Empleado {
     // Atributos
     private String nombre;
     private String contexto;
@@ -16,7 +16,7 @@ public class Empleados {
     private Date fechaInactivacion;
 
     // Constructor
-    public Empleados(String nombre, String contexto, String correoContacto, String documento, String tipoContratacion, String direccion, String numeroContacto) {
+    public Empleado(String nombre, String contexto, String correoContacto, String documento, String tipoContratacion, String direccion, String numeroContacto) {
         this.nombre = nombre;
         this.contexto = contexto;
         this.correoContacto = correoContacto;
@@ -35,7 +35,7 @@ public class Empleados {
 
     // Métodos adicionales
     public void asignarActividad() {
-        System.out.println("Actividad asignada al empleado: " + this.nombre);
+        System.out.println("com.multiworks.clases.Actividad asignada al empleado: " + this.nombre);
     }
 
     public void actualizarInformacion(String nuevoNombre, String nuevaDireccion, String nuevoNumeroContacto) {
