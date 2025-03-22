@@ -2,24 +2,17 @@ package com.multiworks.cliente;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.util.Date;
 
 public class ClienteForm extends JFrame {
-    private JTextField nombreField;
-    private JTextField documentoField;
-    private JTextField telefonoField;
-    private JTextField correoField;
-    private JTextField direccionField;
-    private JButton guardarButton;
-
     private ClienteDAO clienteDAO;
 
-    public ClienteForm(ClienteDAO clienteDAO) {
-        this.clienteDAO = clienteDAO;
-        setTitle("Registrar Cliente");
+    public ClienteForm() {
+        clienteDAO = new ClienteDAO();
+        initUI();
+    }
+
+    private void initUI() {
+        setTitle("Gestión de Clientes");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -27,62 +20,59 @@ public class ClienteForm extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(7, 2));
 
+        JTextField txtDocumento = new JTextField();
+        JTextField txtNombre = new JTextField();
+        JTextField txtTipoPersona = new JTextField();
+        JTextField txtDireccion = new JTextField();
+        JTextField txtTelefono = new JTextField();
+        JTextField txtCorreo = new JTextField();
+
+        JButton btnAgregar = new JButton("Agregar Cliente");
+        JButton btnListar = new JButton("Listar Clientes");
+
+        panel.add(new JLabel("Documento:"));
+        panel.add(txtDocumento);
         panel.add(new JLabel("Nombre:"));
-        nombreField = new JTextField();
-        panel.add(nombreField);
-
-        panel.add(new JLabel("DUI (Documento de Identificación):"));
-        documentoField = new JTextField();
-        panel.add(documentoField);
-
-        panel.add(new JLabel("Teléfono:"));
-        telefonoField = new JTextField();
-        panel.add(telefonoField);
-
-        panel.add(new JLabel("Correo:"));
-        correoField = new JTextField();
-        panel.add(correoField);
-
+        panel.add(txtNombre);
+        panel.add(new JLabel("Tipo de Persona:"));
+        panel.add(txtTipoPersona);
         panel.add(new JLabel("Dirección:"));
-        direccionField = new JTextField();
-        panel.add(direccionField);
+        panel.add(txtDireccion);
+        panel.add(new JLabel("Teléfono:"));
+        panel.add(txtTelefono);
+        panel.add(new JLabel("Correo:"));
+        panel.add(txtCorreo);
+        panel.add(btnAgregar);
+        panel.add(btnListar);
 
-        guardarButton = new JButton("Guardar");
-        panel.add(guardarButton);
+        btnAgregar.addActionListener(e -> {
+            Cliente cliente = new Cliente(
+                    txtDocumento.getText(),
+                    txtNombre.getText(),
+                    txtTipoPersona.getText(),
+                    txtDireccion.getText(),
+                    txtTelefono.getText(),
+                    txtCorreo.getText(),
+                    "admin@example.com",
+                    java.time.LocalDate.now().toString()
+            );
+            clienteDAO.agregarCliente(cliente);
+            JOptionPane.showMessageDialog(this, "Cliente agregado: " + cliente.getNombre());
+        });
 
-        guardarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String nombre = nombreField.getText();
-                String documento = documentoField.getText();
-                String telefono = telefonoField.getText();
-                String correo = correoField.getText();
-                String direccion = direccionField.getText();
-
-                Cliente cliente = new Cliente(
-                        0, nombre, documento, "Natural", telefono, correo, direccion, true,
-                        "Admin", new Date(), null, null
-                );
-
-                try {
-                    clienteDAO.agregarCliente(cliente);
-                    JOptionPane.showMessageDialog(null, "Cliente registrado exitosamente.");
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error al registrar cliente.");
-                }
+        btnListar.addActionListener(e -> {
+            StringBuilder lista = new StringBuilder("Clientes:\n");
+            for (Cliente c : clienteDAO.listarClientes()) {
+                lista.append(c).append("\n");
             }
+            JOptionPane.showMessageDialog(this, lista.toString());
         });
 
         add(panel);
     }
 
-    // Método principal para ejecutar el formulario
     public static void main(String[] args) {
-        Connection connection = null;
-        ClienteDAO clienteDAO = new ClienteDAO(connection);
-        ClienteForm form = new ClienteForm(clienteDAO);
-        form.setVisible(true);
+        SwingUtilities.invokeLater(() -> new ClienteForm().setVisible(true));
     }
 }
 
