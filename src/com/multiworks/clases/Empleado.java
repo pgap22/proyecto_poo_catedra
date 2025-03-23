@@ -5,7 +5,6 @@ import java.util.Date;
 public class Empleado {
     // Atributos
     private String nombre;
-    private String contexto;
     private String correoContacto;
     private String documento;
     private String tipoContratacion;
@@ -16,9 +15,8 @@ public class Empleado {
     private Date fechaInactivacion;
 
     // Constructor
-    public Empleado(String nombre, String contexto, String correoContacto, String documento, String tipoContratacion, String direccion, String numeroContacto) {
+    public Empleado(String nombre, String correoContacto, String documento, String tipoContratacion, String direccion, String numeroContacto) {
         this.nombre = nombre;
-        this.contexto = contexto;
         this.correoContacto = correoContacto;
         this.documento = documento;
         this.tipoContratacion = tipoContratacion;
@@ -54,7 +52,6 @@ public class Empleado {
 
     public void mostrarInformacion() {
         System.out.println("Nombre: " + this.nombre);
-        System.out.println("Contexto: " + this.contexto);
         System.out.println("Correo de contacto: " + this.correoContacto);
         System.out.println("Documento: " + this.documento);
         System.out.println("Tipo de contratación: " + this.tipoContratacion);
