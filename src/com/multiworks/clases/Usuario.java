@@ -37,6 +37,22 @@ public class Usuario {
 
     // Getters and Setters
 
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
     public String getEmail() {
         return email;
     }

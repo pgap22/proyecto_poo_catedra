@@ -14,9 +14,10 @@ public class Cotizacion {
     private double costoAdicional;
     private double costoAsignacion;
     private List<Actividad> actividades;
+    private Cliente cliente; // Composición: la cotización depende del cliente que la solicita
 
     // Constructor
-    public Cotizacion(int id, Date fechaInicio, Date fechaFin, int cantidadHoras, double costo, double costoAdicional, double costoAsignacion) {
+    public Cotizacion(int id, Date fechaInicio, Date fechaFin, int cantidadHoras, double costo, double costoAdicional, double costoAsignacion, Cliente cliente) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -25,6 +26,7 @@ public class Cotizacion {
         this.costoAdicional = costoAdicional;
         this.costoAsignacion = costoAsignacion;
         this.actividades = new ArrayList<>();
+        this.cliente = cliente;
     }
 
     // Métodos Getters y Setters

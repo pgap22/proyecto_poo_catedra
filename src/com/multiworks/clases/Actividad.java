@@ -9,12 +9,12 @@ public class Actividad {
     private Empleado empleadoAsignado; // Relación de asignación con Empleado
 
     // Constructor
-    public Actividad(int id, String titulo, String descripcion, Cotizacion cotizacion) {
+    public Actividad(int id, String titulo, String descripcion, Cotizacion cotizacion, Empleado empleadoAsignado) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.cotizacion = cotizacion;
-        this.empleadoAsignado = null; // Inicialmente no hay empleado asignado
+        this.empleadoAsignado = empleadoAsignado;
     }
 
     //metodos Getters y Setters
